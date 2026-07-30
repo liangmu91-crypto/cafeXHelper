@@ -34,6 +34,7 @@ function setStatic() {
   $("nav-settings").innerHTML = window.XICONS.settings({ size: 18 }) + "<span>设置</span>";
 
   $("btn-sync-now").innerHTML = window.XICONS.sync({}) + "<span>同步</span>";
+  $("btn-open-site").innerHTML = window.XICONS.external({}) + "<span>打开</span>";
   $("btn-follow-all").innerHTML = window.XICONS.checkCircle({}) + "<span>一键关注</span>";
   $("btn-repick").innerHTML = window.XICONS.refresh({}) + "<span>换一批</span>";
   $("btn-save-settings").innerHTML = window.XICONS.check({}) + "<span>保存</span>";
@@ -159,6 +160,11 @@ function bindEvents() {
 
   // 顶部同步：读取当前已打开的网页列表
   $("btn-sync-now").addEventListener("click", syncNow);
+
+  // 一键打开群组页面
+  $("btn-open-site").addEventListener("click", () => {
+    chrome.tabs.create({ url: "https://new.web.cafe/groups/8erar2bumk" });
+  });
 
   // 一键关注当前批次
   $("btn-follow-all").addEventListener("click", async () => {
