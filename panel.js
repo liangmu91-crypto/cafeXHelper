@@ -107,7 +107,6 @@ function renderAll() {
 // 单行渲染（今日 & 全部通用；全部多一个标记切换按钮）
 function rowHtml(a) {
   const followed = isFollowed(a.handle);
-  const inToday = !$("view-today").hidden;
   const badge = followed
     ? `<span class="badge badge-followed">${window.XICONS.check({ size: 14, strokeW: 3 })}已关注</span>`
     : `<span class="badge badge-pending">待关注</span>`;
@@ -116,9 +115,8 @@ function rowHtml(a) {
   const tweet = tweetUrl
     ? `<button class="icon-btn js-open-tweet" data-url="${escapeAttr(tweetUrl)}" aria-label="打开 ${escapeAttr(a.name)} 的 X（新标签）" title="${a.tweetUrl ? "直达推文" : "X 主页"}">${window.XICONS.twitter({})}</button>`
     : `<button class="icon-btn" disabled aria-label="暂无链接" title="暂无链接">${window.XICONS.user({})}</button>`;
-  const toggle = inToday
-    ? ""
-    : followed
+  // 今日 & 全部都支持单独点击标记/取消已关注
+  const toggle = followed
     ? `<button class="btn btn-sm btn-ghost js-toggle" data-handle="${a.handle}" data-val="0">取消</button>`
     : `<button class="btn btn-sm btn-primary js-toggle" data-handle="${a.handle}" data-val="1">已关注</button>`;
   return `
