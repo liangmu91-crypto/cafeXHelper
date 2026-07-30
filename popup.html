@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X 计划助手</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="popup">
+    <div class="brand">
+      <span class="logo" id="brand-logo"></span>
+      <span>X 计划助手</span>
+    </div>
+
+    <div class="card" style="margin-bottom:var(--space-md);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--space-sm);">
+        <span style="font-weight:600;">今日进度</span>
+        <span id="popup-progress" style="color:var(--color-primary);font-weight:700;">—</span>
+      </div>
+      <div class="progress"><span id="popup-bar" style="width:0%"></span></div>
+      <div style="color:var(--color-muted);font-size:13px;margin-top:var(--space-sm);" id="popup-detail">—</div>
+    </div>
+
+    <div style="color:var(--color-muted);font-size:13px;margin-bottom:var(--space-md);" id="popup-sync">最近同步：—</div>
+
+    <button class="btn btn-ghost" id="btn-sync-now" style="width:100%;margin-bottom:var(--space-sm);"></button>
+    <button class="btn btn-primary" id="btn-open-panel"></button>
+  </div>
+
+  <script src="icons-svg.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

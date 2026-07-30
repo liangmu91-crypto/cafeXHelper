@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X 计划助手</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="sp-shell">
+    <!-- 顶部固定栏：品牌 + 同步 -->
+    <header class="sp-top">
+      <div class="sp-brand">
+        <span class="logo" id="brand-logo"></span>
+        <span>X 计划助手</span>
+      </div>
+      <button class="btn btn-primary btn-sm" id="btn-sync-now" title="读取当前已打开的网页列表"></button>
+    </header>
+
+    <!-- 同步结果反馈条（成功/失败/条数） -->
+    <div class="sp-sync-status" id="sync-status" role="status" aria-live="polite">
+      最近同步：<span id="sync-status-text">—</span>
+    </div>
+
+    <!-- 标签页 -->
+    <nav class="sp-tabs" role="tablist">
+      <button class="sp-tab active" data-view="today" id="nav-today" role="tab" aria-selected="true"></button>
+      <button class="sp-tab" data-view="all" id="nav-all" role="tab" aria-selected="false"></button>
+      <button class="sp-tab" data-view="settings" id="nav-settings" role="tab" aria-selected="false"></button>
+    </nav>
+
+    <!-- 可滚动主区 -->
+    <main class="sp-main">
+      <!-- 视图：今日待关注 -->
+      <section id="view-today" class="view">
+        <p class="page-sub" id="today-sub" style="margin-top:var(--space-md);">从未关注的群友中随机挑选，每天一刷。</p>
+
+        <div class="stat-grid">
+          <div class="stat"><div class="num" id="stat-total">—</div><div class="lbl">列表总数</div></div>
+          <div class="stat"><div class="num" id="stat-followed">—</div><div class="lbl">已关注</div></div>
+          <div class="stat"><div class="num" id="stat-left">—</div><div class="lbl">剩余未关注</div></div>
+        </div>
+
+        <div class="sp-action-row">
+          <button class="btn btn-primary" id="btn-follow-all"></button>
+          <button class="btn btn-ghost btn-sm" id="btn-repick"></button>
+        </div>
+
+        <div id="today-list"></div>
+      </section>
+
+      <!-- 视图：全部账号 -->
+      <section id="view-all" class="view" hidden>
+        <div class="sp-filter-row">
+          <input type="search" class="input" id="search" placeholder="搜索昵称 / 账号 / 备注" aria-label="搜索账号" />
+          <label class="badge badge-default sp-check">
+            <input type="checkbox" id="filter-unfollowed" />
+            仅未关注
+          </label>
+        </div>
+        <div id="all-list"></div>
+      </section>
+
+      <!-- 视图：设置 -->
+      <section id="view-settings" class="view" hidden>
+        <div class="card">
+          <label class="field-label" for="set-daily">每天关注人数</label>
+          <input id="set-daily" type="number" min="1" max="50" class="input" style="max-width:160px;" />
+          <p style="color:var(--color-muted);font-size:13px;margin-top:var(--space-sm);">每天从「未关注」的人里随机挑选这么多位推荐给你。</p>
+          <div style="margin-top:var(--space-md);">
+            <button class="btn btn-primary btn-sm" id="btn-save-settings"></button>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:var(--space-md);">
+          <label class="field-label">数据管理</label>
+          <p style="color:var(--color-muted);font-size:14px;margin:0 0 var(--space-md);">清除所有本地「已关注」标记，重新开始推荐。</p>
+          <button class="btn btn-ghost btn-sm" id="btn-reset-followed" style="color:var(--color-danger);border-color:var(--color-danger-soft);">重置关注状态</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="icons-svg.js"></script>
+  <script src="panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# 系统/编辑器
+.DS_Store
+Thumbs.db
+*.log
+
+# 依赖（如有）
+node_modules/
+
+# 工具生成
+.zcode/
+
+# 生成产物（图标由 tools/make-icons.js 生成，保留入库以便直接加载）
+# icons/ 不忽略
